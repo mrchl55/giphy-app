@@ -1,0 +1,38 @@
+@import 'variables';
+
+.search {
+  &__container {
+    background: $color-text;
+    padding: 25px;
+    display: flex;
+    align-items: stretch;
+    margin: 0 auto;
+    justify-content: center;
+
+    label {
+      margin-right: 10px;
+      align-self: center;
+      @include respond(desktop) {
+        font-size: 20px;
+      }
+    }
+
+    input {
+      @include respond(desktop) {
+        width: 25%;
+      }
+    }
+
+    button {
+      background: $color-primary;
+      color: white;
+      border: none;
+      margin-left: 5px;
+      @include respond(desktop) {
+        font-size: 18px;
+        padding: 5px 8px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

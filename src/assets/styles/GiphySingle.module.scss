@@ -1,0 +1,26 @@
+@import 'variables';
+.giphy-single {
+  &__container {
+    max-height: 800px;
+  }
+
+  &__inner {
+max-height: 200px;
+    @include respond(desktop){
+      max-height: 400px;
+
+    }
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-height: 200px;
+      max-width: 100%;
+@include respond(desktop){
+  max-height: 300px;
+
+}
+    }
+
+  }
+}
