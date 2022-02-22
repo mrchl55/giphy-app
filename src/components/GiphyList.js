@@ -19,9 +19,7 @@ const GiphyList = () => {
         if (loading) return
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
-            console.log(entries[0])
             if (entries[0].isIntersecting && hasMore) {
-                console.log('viisble')
                 setOffset(prevOffset => (prevOffset + 1) * 5)
             }
         })

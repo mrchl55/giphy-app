@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
+
 const baseURL = 'https://api.giphy.com/v1/gifs';
 const apiKey = 'z3TCxWMXI3poet0DNQBeC8RfYrprX7U1';
 export default function useGiphySearch(searchQuery, offset) {
@@ -16,18 +17,16 @@ export default function useGiphySearch(searchQuery, offset) {
         setLoading(true)
         setError(false)
         let url;
-        if(searchQuery?.length){
+        if (searchQuery?.length) {
             url = `${baseURL}/search?api_key=${apiKey}`
+        } else {
+            url = `${baseURL}/trending?api_key=${apiKey}`;
         }
-        else{
-            url= `${baseURL}/trending?api_key=${apiKey}`;
-        }
-        console.log(url)
         let cancel
         axios({
             method: 'GET',
             url,
-            params: { q: searchQuery, offset: offset, limit: 5 },
+            params: {q: searchQuery, offset: offset, limit: 5},
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setGiphyData(prevGiphy => {
@@ -42,5 +41,5 @@ export default function useGiphySearch(searchQuery, offset) {
         return () => cancel()
     }, [searchQuery, offset])
 
-    return { loading, error, giphyData, hasMore }
+    return {loading, error, giphyData, hasMore}
 }
