@@ -17,11 +17,12 @@ export default function useGiphySearch(searchQuery, offset) {
         setError(false)
         let url;
         if(searchQuery?.length){
-
             url = `${baseURL}/search?api_key=${apiKey}`
-        }else{
+        }
+        else{
             url= `${baseURL}/trending?api_key=${apiKey}`;
         }
+        console.log(url)
         let cancel
         axios({
             method: 'GET',

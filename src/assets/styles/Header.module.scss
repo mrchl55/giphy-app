@@ -1,14 +1,16 @@
 @import "variables";
-.header{
-  &__container{
+
+.header {
+  &__container {
     padding: 30px 20px;
     width: 100%;
     background: $color-primary;
     color: $color-text;
-    h1{
+
+    h1 {
       text-align: center;
       margin: 0;
-      @include respond(desktop){
+      @include respond(desktop) {
         font-size: 44px;
       }
     }

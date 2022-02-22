@@ -14,12 +14,17 @@
 
   &-item {
     height: 300px;
-   display: flex;
-   justify-content: center;
+    display: flex;
+    justify-content: center;
 
     @include respond(desktop) {
       height: 400px;
 
     }
+  }
+
+  p {
+    color: white;
+    text-align: center;
   }
 }

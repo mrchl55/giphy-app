@@ -1,5 +1,16 @@
 @import "variables";
 
-#root{
+#root {
   background: $color-secondary;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
 }

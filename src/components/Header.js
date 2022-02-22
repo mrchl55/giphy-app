@@ -4,5 +4,4 @@ const Header = () => {
         <h1>Giphy</h1>
     </header>
 }
-
 export {Header as default}

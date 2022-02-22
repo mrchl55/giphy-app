@@ -1,10 +1,8 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useContext} from "react";
 import classes from '../assets/styles/Search.module.scss'
 import GiphyContext from "../context/giphy-context";
 const Search = () => {
     const {setSearchQuery} = useContext(GiphyContext)
-
-
     const onSearchSubmit = (e) => {
         e.preventDefault();
         setSearchQuery(e.target['search'].value)

@@ -1,5 +1,5 @@
 import GiphySingle from "./GiphySingle";
-import {useEffect, useState, useRef, useCallback, useContext} from "react";
+import {useRef, useCallback, useContext} from "react";
 import GiphyContext from "../context/giphy-context";
 import useGiphySearch from "../hooks/useGiphySearch";
 import classes from '../assets/styles/GiphyList.module.scss'
@@ -26,23 +26,24 @@ const GiphyList = () => {
             }
         })
         if (node) observer.current.observe(node)
-    }, [  hasMore, loading])
-
-
+    }, [hasMore, loading, setOffset])
 
     return (
         <ul className={classes['giphy-list']}>
 
-            {giphyData?.length && giphyData.map((giphy, index) => {
+            {giphyData.map((giphy, index) => {
                 if (giphyData.length === index + 1) {
-                    return <li className={classes['giphy-list-item']} ref={lastGiphyElementRef} key={`${giphy.id}-${index}`}><GiphySingle {...giphy}/></li>
+                    return <li className={classes['giphy-list-item']} ref={lastGiphyElementRef}
+                               key={`${giphy.id}-${index}`}><GiphySingle {...giphy}/></li>
                 } else {
-                    return <li key={`${giphy.id}-${index}`} className={classes['giphy-list-item']}><GiphySingle {...giphy}/>
+                    return <li key={`${giphy.id}-${index}`} className={classes['giphy-list-item']}>
+                        <GiphySingle {...giphy}/>
                     </li>
                 }
             })}
-            <div>{loading && 'Loading...'}</div>
-            <div>{error && 'Error'}</div>
+            <p>{loading && 'Loading...'}</p>
+            <p>{error && 'Error'}</p>
+            <p>{(!loading && !giphyData?.length) && 'No results'}</p>
         </ul>
     )
 }
